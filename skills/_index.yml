@@ -1,0 +1,25 @@
+generated: '2026-09-05'
+method: generated
+source: >-
+  Grounded in openapi/aaravunmannedsystems-tile-server-openapi-original.json — every operationId
+  referenced was verified to exist verbatim in the published spec — plus probe-verified auth and
+  error behaviour recorded in authentication/ and errors/.
+note: >-
+  One skill only. Aereo publishes exactly one machine-readable contract (the Tile Server), so there
+  is one marquee flow to package. No provider-published AGENTS.md or skill files were found.
+skills:
+- file: aaravunmannedsystems-render-terrain-and-imagery.md
+  name: Render Aereo Cloud terrain and imagery tiles
+  description: >-
+    Load an Aereo Cloud drone survey into a 3D map client — terrain metadata, quantized-mesh terrain,
+    orthomosaic and histogram rasters, and vector tiles — with the bearer auth the spec omits.
+  api: openapi/aaravunmannedsystems-tile-server-openapi-original.json
+  operations:
+  - ping_ping_get
+  - terrain_metadata_view_terrain_layer_json_get
+  - cesium_terrain_metadata_view_cesium_terrain_layer_json_get
+  - terrain_tile_view_terrain__z___x___y__terrain_get
+  - cesium_terrain_tile_view_cesium_terrain__z___x___y__terrain_get
+  - cog_tile_view_ortho__z___x___y__png_get
+  - vector_tile_view_vector__z___x___y__pbf_get
+  - cog_histogram_tile_view_histogram__z___x___y__png_get

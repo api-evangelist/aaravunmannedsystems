@@ -1,0 +1,51 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Aereo Cloud Tile Server
+  version: 1.0.0
+extends: openapi/aaravunmannedsystems-tile-server-openapi-original.json
+x-generated: '2026-09-05'
+x-method: generated
+x-source: >-
+  Enhancements derived from live probes of https://tiles.aereo.io and from the Aereo Cloud client
+  bundle. The original harvested spec is never mutated; every correction below is expressed as an
+  overlay action so the provider's own document stays verbatim.
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: aaravunmannedsystems
+    x-apievangelist-harvested: '2026-09-05'
+    x-apievangelist-source: https://tiles.aereo.io/openapi.json
+    description: >-
+      A microservice for serving the map tiles behind Aereo Cloud, Aereo's (formerly Aarav Unmanned
+      Systems) drone geospatial platform. Delivers Mapbox vector tiles, Cloud Optimized GeoTIFF
+      orthomosaic and histogram rasters, MBTiles rasters, quantized-mesh terrain and Cesium 3D Tiles,
+      plus a point-altitude lookup and a health check.
+- target: $
+  update:
+    servers:
+    - url: https://tiles.aereo.io
+      description: >-
+        Production Tile Server. Added by API Evangelist — the published document declares no
+        servers[] block at all, so a generated client has no host to call. This host is the one the
+        spec was fetched from and the one the Aereo Cloud client names as tileServerUrl.
+- target: $
+  update:
+    components:
+      securitySchemes:
+        bearerAuth:
+          type: http
+          scheme: bearer
+          description: >-
+            Added by API Evangelist from PROBE evidence, not from provider documentation. The
+            published contract declares no securitySchemes, yet every operation except GET /ping
+            returns 401 without an Authorization bearer token, and the Aereo Cloud client sends
+            `Authorization: Bearer <token>`. Token issuance is not publicly documented.
+- target: $.paths./ping.get
+  update:
+    x-apievangelist-note: >-
+      The only operation reachable without a credential; verified 200 returning {"data":"pong"}.
+- target: $.paths./altitude.get
+  update:
+    x-apievangelist-note: >-
+      Verified 401 unauthenticated. Query parameters are not enumerated in the published contract,
+      so the point and dataset selectors cannot be discovered from the spec alone.

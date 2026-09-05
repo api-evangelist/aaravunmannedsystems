@@ -1,0 +1,16 @@
+generated: '2026-09-05'
+method: searched
+source: https://aereo.io/ and https://resources.aereo.io/
+plan_count: 0
+plans: []
+note: >-
+  Aereo publishes no pricing tiers. It sells enterprise drone surveying engagements and Aereo Cloud
+  subscriptions through a sales motion — the only commercial calls to action on either site are
+  "Contact Us" (https://aereo.io/contact/) and a demo-booking form on resources.aereo.io. No
+  self-serve signup, no published rate card, no quota or overage table. https://aereo.io/pricing
+  returns 404.
+model: contact-sales
+evidence:
+- {url: 'https://aereo.io/pricing', status: 404}
+- {url: 'https://aereo.io/contact/', status: 200}
+- {url: 'https://resources.aereo.io/', status: 200}

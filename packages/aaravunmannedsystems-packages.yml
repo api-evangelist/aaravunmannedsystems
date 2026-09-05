@@ -1,0 +1,32 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  Registry lookups against registry.npmjs.org and pypi.org, plus searches of aereo.io,
+  resources.aereo.io and GitHub for a first-party Aereo organization or client library.
+note: >-
+  NO FIRST-PARTY CLIENT LIBRARIES EXIST. Aereo publishes no SDKs, no CLI and no public source
+  repositories. No `SDKs` and no `Packages` pointer is wired into apis.yml, because there is
+  nothing to point at.
+package_count: 0
+packages: []
+rejected:
+- name: aereo
+  registry: pypi
+  url: https://pypi.org/project/aereo/
+  version: 1.5.1
+  published: null
+  official: false
+  rejection_reason: >-
+    NAME COLLISION, NOT THIS COMPANY. The PyPI package "aereo" is an earth-observation access and
+    reprojection library authored by Francisco Dorr (fran.dorr@gmail.com), unaffiliated with Aereo
+    (Aarav Unmanned Systems). Its metadata names no aereo.io URL. Recorded here so a future round
+    does not mistake it for a first-party SDK.
+searched_registries:
+- {registry: npm, queries: [aereo, aereo-sdk, aereo-cloud], result: 404 on all}
+- {registry: pypi, queries: [aereo, aereo-sdk], result: 'aereo exists but is third-party (see rejected); aereo-sdk 404'}
+github_organizations_probed:
+- {org: aereo, status: 404}
+- {org: aereo-io, status: 404}
+- {org: aereo-cloud, status: 404}
+- {org: aarav-unmanned-systems, status: 404}
+- {org: aaravunmannedsystems, status: 404}

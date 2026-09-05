@@ -1,0 +1,59 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/aaravunmannedsystems-tile-server-openapi-original.json (422 responses) plus live status
+  codes observed on tiles.aereo.io
+format: proprietary-envelope
+rfc9457: false
+envelope:
+  shape: '{"meta": {"success": false, "status_code": <int>, "message": "", "type": "HTTPException", "slug": "", "details": {}}, "data": {}}'
+  code_field: meta.slug
+  code_field_populated: false
+  note: >-
+    meta.slug is the machine-readable error-code slot and was EMPTY on every error response probed,
+    so callers must branch on the HTTP status alone. No published error reference exists.
+problems:
+- status: 401
+  title: Unauthenticated
+  method: probed
+  documented_in_spec: false
+  detail: >-
+    Returned by every operation except /ping when no Authorization bearer token is presented.
+    Not declared anywhere in the OpenAPI, which lists no 401 response and no securitySchemes.
+  evidence: GET https://tiles.aereo.io/terrain/layer.json -> 401
+- status: 404
+  title: Not Found
+  method: probed
+  documented_in_spec: false
+  detail: Returned for unknown paths with the standard meta/data envelope and type HTTPException.
+  evidence: GET https://tiles.aereo.io/ -> 404
+- status: 405
+  title: Method Not Allowed
+  method: probed
+  documented_in_spec: false
+  detail: Returned for a HEAD request against a GET-only tile route.
+  evidence: HEAD https://tiles.aereo.io/terrain/layer.json -> 405
+- status: 422
+  title: Validation Error
+  method: derived
+  documented_in_spec: true
+  schema: HTTPValidationError
+  detail: >-
+    FastAPI request-validation failure. The only error response the published contract declares.
+    Body is {"detail": [{"loc": [...], "msg": "...", "type": "..."}]} per components.schemas.
+  source_operations:
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#vector_tile_view_vector__z___x___y__pbf_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#cesium_terrain_metadata_view_cesium_terrain_layer_json_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#cesium_terrain_tile_view_cesium_terrain__z___x___y__terrain_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#terrain_metadata_view_terrain_layer_json_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#terrain_tile_view_terrain__z___x___y__terrain_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#cog_tile_view_ortho__z___x___y__png_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#mbtiles_view_mbtiles__z___x___y__png_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#cog_histogram_tile_view_histogram__z___x___y__png_get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#cesium_3dtiles_view_3dtiles__filename___extension__get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#cv_tiles_view_cv_tiles__filename___extension__get
+  - openapi/aaravunmannedsystems-tile-server-openapi-original.json#get_altitude_view_altitude_get
+gaps:
+- No published error reference or error-code registry.
+- 401 is enforced on 11 of 12 operations but declared on none of them.
+- meta.slug is structurally present but never populated, so there are no stable error codes.

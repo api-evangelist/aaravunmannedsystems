@@ -1,0 +1,94 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/aaravunmannedsystems-tile-server-openapi-original.json plus live response envelopes and
+  headers observed on tiles.aereo.io, rainbow-analytics-api.aereo.io and rainbow-processing-api.aereo.io
+note: >-
+  Aereo publishes no conventions documentation. Everything below is derived from the one published
+  contract and from response bodies and headers observed on the company's own API hosts. The response
+  envelope is notably consistent across three independent Aereo services, which makes it a genuine
+  house convention rather than an artifact of one microservice.
+authentication:
+  style: bearer-token
+  header: Authorization
+  detail: See authentication/aaravunmannedsystems-authentication.yml — enforced but undeclared in the spec.
+response_envelope:
+  documented: false
+  method: probed
+  shape: '{"meta": {...}, "data": ...}'
+  fields:
+    meta.success: boolean
+    meta.status_code: integer, mirrors the HTTP status
+    meta.message: human-readable string, frequently empty
+    meta.type: exception class name on errors (e.g. "HTTPException"), empty on success
+    meta.slug: machine-readable error slug, observed empty on every probed response
+    meta.details: object or array carrying additional context
+    data: the payload on success, {} on error
+  consistency: >-
+    Identical envelope observed on tiles.aereo.io, rainbow-analytics-api.aereo.io and
+    rainbow-processing-api.aereo.io — a shared house convention across Aereo Cloud services.
+  note: >-
+    The envelope is NOT reflected in the published OpenAPI, which declares only bare 200 responses
+    and a FastAPI HTTPValidationError for 422. A client generated from the spec will not model it.
+errors:
+  format: proprietary-envelope
+  rfc9457: false
+  content_type: application/json
+  detail: See errors/aaravunmannedsystems-problem-types.yml
+  note: >-
+    meta.slug exists as a machine-readable error-code slot but was empty on every response observed,
+    so an agent has no stable error code to branch on — only the HTTP status.
+pagination:
+  supported: false
+  note: The published surface is tile and metadata retrieval; no collection endpoints, so no pagination.
+versioning:
+  scheme: none-in-path
+  current: '0.1.0'
+  source: openapi info.version
+  note: >-
+    No version segment in any path and no version header observed. info.version 0.1.0 is a build
+    version, not a published API version, and there is no documented versioning policy.
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id or correlation header returned. Responses pass through CloudFront and carry
+    x-amz-cf-id, which is a CDN trace, not an application request id.
+rate_limit_signaling:
+  headers: []
+  note: No RateLimit-*, X-RateLimit-* or Retry-After headers observed. See rate-limits/.
+caching:
+  headers_observed: [cache-control, pragma]
+  detail: 'tiles.aereo.io returns cache-control: no-store, pragma: no-cache on error responses.'
+security_headers:
+  observed:
+  - 'strict-transport-security: max-age=3600'
+  - 'x-content-type-options: nosniff'
+  - 'x-frame-options: DENY'
+  - 'content-security-policy: default-src ''self'''
+  - 'referrer-policy: same-origin'
+  - 'cross-origin-opener-policy: same-origin'
+  - 'cross-origin-embedder-policy: require-corp'
+  - 'x-xss-protection: 1; mode=block'
+  host: tiles.aereo.io
+  note: A deliberate, fairly complete security-header posture on the API host.
+idempotency:
+  coverage: na
+  supported: false
+  header: null
+  scope: []
+  note: >-
+    na, not none. The entire published surface is read-only — all twelve operations in the Tile
+    Server spec are GET. There is no mutating operation for an idempotency key to protect, so this
+    dimension has no denominator here rather than scoring zero.
+dry_run_mode:
+  supported: false
+  coverage: na
+  note: No write surface, so there is nothing to rehearse.
+reversibility:
+  coverage: na
+  grade: na
+  note: >-
+    na. Every published operation is a GET returning tiles, terrain meshes, 3D Tiles or an altitude
+    lookup — nothing to cancel, refund, void or restore. No reversal operation is claimed and no
+    window is asserted, because the API has no write surface to reverse.
+  write_surfaces: []

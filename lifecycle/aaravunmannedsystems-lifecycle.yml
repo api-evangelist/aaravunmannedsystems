@@ -1,0 +1,40 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/aaravunmannedsystems-tile-server-openapi-original.json plus searches of aereo.io,
+  resources.aereo.io and DNS for status/trust subdomains
+note: >-
+  Aereo publishes no versioning policy, no deprecation policy, no SLA and no status page. All values
+  below are recorded absences, established by search and DNS probe, not assumptions. No StatusPage
+  and no Deprecation pointer is emitted in apis.yml, because neither surface exists.
+versioning:
+  scheme: none
+  current: '0.1.0'
+  source: openapi info.version
+  docs: null
+  note: >-
+    info.version 0.1.0 is a FastAPI build version. No version segment appears in any path, no version
+    header is returned, and no versioning policy is published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: No RFC 8594 Sunset or Deprecation header observed and no deprecation policy page found.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  method: probed
+  evidence:
+  - status.aereo.io -> NXDOMAIN (no DNS record)
+  - https://aereo.io/status -> 404
+deprecated_operations: []
+health_endpoints:
+- https://tiles.aereo.io/ping
+- https://rainbow-analytics-api.aereo.io/ping
+- https://rainbow-processing-api.aereo.io/ping
+- https://log-server.aereo.io/ (returns "hello")
+changelog:
+  url: null
+  note: No dated changelog or release-notes page found on aereo.io or resources.aereo.io.

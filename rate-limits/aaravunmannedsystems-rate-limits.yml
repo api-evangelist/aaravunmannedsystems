@@ -1,0 +1,17 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live response headers from https://tiles.aereo.io plus a search of aereo.io and resources.aereo.io
+  for a published limits policy.
+limit_count: 0
+limits: []
+headers: []
+note: >-
+  No rate limits are published and none are signalled at runtime. Responses from tiles.aereo.io carry
+  no RateLimit-*, no X-RateLimit-*, and no Retry-After header, and no 429 was observed. The provider
+  documents no limits policy anywhere on its public surface. An agent has no runtime signal to back
+  off on — an honest zero, not an unchecked field.
+exhaustion_status: null
+evidence:
+- {url: 'https://tiles.aereo.io/ping', status: 200, note: 'headers inspected; no rate-limit headers present'}
+- {url: 'https://tiles.aereo.io/terrain/layer.json', status: 401, note: 'headers inspected; no rate-limit headers present'}

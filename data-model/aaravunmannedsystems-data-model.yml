@@ -1,0 +1,85 @@
+generated: '2026-09-05'
+method: derived
+source: openapi/aaravunmannedsystems-tile-server-openapi-original.json
+note: >-
+  A tile server is a coordinate-addressed retrieval surface, not a resource CRUD API, so the
+  "entity graph" here is the tiling scheme rather than a set of linked records. The spec's only
+  named schemas are FastAPI validation types. Nothing is invented — every entity below is a real
+  path template or parameter in the contract.
+entities:
+- name: TilePyramid
+  kind: addressing-scheme
+  description: >-
+    The XYZ/slippy-map addressing every tile route shares. Not a JSON schema — a path template.
+  identifiers:
+  - {field: z, type: integer, role: zoom level}
+  - {field: x, type: integer, role: tile column}
+  - {field: y, type: integer, role: tile row}
+- name: VectorTile
+  kind: binary-resource
+  media: application/x-protobuf (Mapbox Vector Tile)
+  path: '/vector/{z}/{x}/{y}.pbf'
+  operation: vector_tile_view_vector__z___x___y__pbf_get
+- name: OrthoTile
+  kind: binary-resource
+  media: image/png (rendered from a Cloud Optimized GeoTIFF)
+  path: '/ortho/{z}/{x}/{y}.png'
+  operation: cog_tile_view_ortho__z___x___y__png_get
+- name: HistogramTile
+  kind: binary-resource
+  media: image/png
+  path: '/histogram/{z}/{x}/{y}.png'
+  operation: cog_histogram_tile_view_histogram__z___x___y__png_get
+- name: MBTile
+  kind: binary-resource
+  media: image/png (served from an MBTiles archive)
+  path: '/mbtiles/{z}/{x}/{y}.png'
+  operation: mbtiles_view_mbtiles__z___x___y__png_get
+- name: TerrainTile
+  kind: binary-resource
+  media: application/vnd.quantized-mesh
+  paths: ['/terrain/{z}/{x}/{y}.terrain', '/cesium-terrain/{z}/{x}/{y}.terrain']
+  operations:
+  - terrain_tile_view_terrain__z___x___y__terrain_get
+  - cesium_terrain_tile_view_cesium_terrain__z___x___y__terrain_get
+- name: TerrainLayerMetadata
+  kind: json-document
+  description: The Cesium layer.json describing a terrain tileset's extent, scheme and available levels.
+  paths: ['/terrain/layer.json', '/cesium-terrain/layer.json']
+  operations:
+  - terrain_metadata_view_terrain_layer_json_get
+  - cesium_terrain_metadata_view_cesium_terrain_layer_json_get
+- name: Cesium3DTileset
+  kind: file-resource
+  description: Cesium 3D Tiles assets addressed by filename and extension rather than by z/x/y.
+  path: '/3dtiles/{filename}.{extension}'
+  operation: cesium_3dtiles_view_3dtiles__filename___extension__get
+- name: CVTileset
+  kind: file-resource
+  description: Computer-vision derived tileset assets, addressed by filename and extension.
+  path: '/cv-tiles/{filename}.{extension}'
+  operation: cv_tiles_view_cv_tiles__filename___extension__get
+- name: AltitudePoint
+  kind: query-result
+  description: Point elevation lookup against the underlying terrain model.
+  path: /altitude
+  operation: get_altitude_view_altitude_get
+relationships:
+- {from: VectorTile, to: TilePyramid, kind: addressed_by, via: 'z/x/y'}
+- {from: OrthoTile, to: TilePyramid, kind: addressed_by, via: 'z/x/y'}
+- {from: HistogramTile, to: TilePyramid, kind: addressed_by, via: 'z/x/y'}
+- {from: MBTile, to: TilePyramid, kind: addressed_by, via: 'z/x/y'}
+- {from: TerrainTile, to: TilePyramid, kind: addressed_by, via: 'z/x/y'}
+- {from: TerrainLayerMetadata, to: TerrainTile, kind: describes, via: layer.json available levels}
+- {from: AltitudePoint, to: TerrainTile, kind: sampled_from, via: underlying terrain model}
+schemas_in_spec:
+- {name: HTTPValidationError, role: FastAPI 422 wrapper}
+- {name: ValidationError, role: FastAPI per-field validation detail}
+gaps:
+- >-
+  No schema describes any successful response body. Every 200 in the contract is an untyped
+  application/json placeholder even where the real payload is a PNG, a protobuf or a quantized-mesh
+  binary, so response media types are wrong or missing across the whole surface.
+- >-
+  The /altitude and tileset operations take query parameters that are not enumerated in the spec,
+  so the dataset/asset selector an agent would need is undiscoverable from the contract.

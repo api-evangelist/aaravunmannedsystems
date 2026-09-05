@@ -1,0 +1,67 @@
+generated: '2026-09-05'
+method: derived
+status: candidate
+source: openapi/aaravunmannedsystems-tile-server-openapi-original.json
+note: >-
+  NOBODY SHIPS AN MCP SERVER FOR THIS PROVIDER. Searches of aereo.io, resources.aereo.io, the npm
+  registry and PyPI found no hosted or local Aereo MCP server, and no MCP endpoint is referenced in
+  the Aereo Cloud client bundle. The tools below are a CANDIDATE surface derived mechanically from
+  the twelve operations in the published Tile Server OpenAPI — they are what an MCP server WOULD
+  expose, not something an agent can call today. For this reason NO `type: MCPServer` pointer is
+  wired into apis.yml: the pointer asserts the provider serves an agent surface, and this one does
+  not exist.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: derived
+server:
+  name: aereo-tile-server
+  transport: null
+  url: null
+tools:
+- name: get_vector_tile
+  description: Retrieve a Mapbox Vector Tile for a z/x/y address.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#vector_tile_view_vector__z___x___y__pbf_get
+- name: get_cesium_terrain_metadata
+  description: Get the Cesium terrain layer.json for a COG.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#cesium_terrain_metadata_view_cesium_terrain_layer_json_get
+- name: get_cesium_terrain_tile
+  description: Get a quantized-mesh terrain tile from the Cesium terrain endpoint.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#cesium_terrain_tile_view_cesium_terrain__z___x___y__terrain_get
+- name: get_terrain_metadata
+  description: Get the terrain layer.json describing the tileset extent and levels.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#terrain_metadata_view_terrain_layer_json_get
+- name: get_terrain_tile
+  description: Retrieve a quantized-mesh terrain tile for a z/x/y address.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#terrain_tile_view_terrain__z___x___y__terrain_get
+- name: get_ortho_tile
+  description: Retrieve a rendered orthomosaic raster tile (PNG) from a Cloud Optimized GeoTIFF.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#cog_tile_view_ortho__z___x___y__png_get
+- name: get_mbtiles_tile
+  description: Retrieve a raster tile (PNG) served from an MBTiles archive.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#mbtiles_view_mbtiles__z___x___y__png_get
+- name: get_histogram_tile
+  description: Retrieve a histogram-stretched raster tile (PNG) from a Cloud Optimized GeoTIFF.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#cog_histogram_tile_view_histogram__z___x___y__png_get
+- name: get_3dtiles_asset
+  description: Retrieve a Cesium 3D Tiles asset by filename and extension.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#cesium_3dtiles_view_3dtiles__filename___extension__get
+- name: get_cv_tiles_asset
+  description: Retrieve a computer-vision derived tileset asset by filename and extension.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#cv_tiles_view_cv_tiles__filename___extension__get
+- name: get_altitude
+  description: Look up point elevation against the underlying terrain model.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#get_altitude_view_altitude_get
+- name: ping
+  description: Health check. The only operation reachable without a bearer token.
+  source_operation: openapi/aaravunmannedsystems-tile-server-openapi-original.json#ping_ping_get
+caveats:
+- >-
+  Eleven of the twelve backing operations require an undocumented bearer token, so a candidate
+  server built from this list would be unusable without credentials Aereo does not publicly issue.
+- >-
+  The published spec enumerates no query parameters for /altitude, /3dtiles or /cv-tiles, so those
+  tools cannot inherit a complete inputSchema from the contract.

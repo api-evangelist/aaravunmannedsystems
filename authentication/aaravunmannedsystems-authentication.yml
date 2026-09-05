@@ -1,0 +1,53 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live probes of https://tiles.aereo.io operations plus the Aereo Cloud SPA bundle
+  (https://cloud.aereo.io/assets/index-0BComw20.js), which names the auth scheme it sends.
+note: >-
+  THE SPEC UNDER-DECLARES ITS OWN AUTH. openapi/aaravunmannedsystems-tile-server-openapi-original.json
+  declares NO components.securitySchemes and no security[] on any operation, yet every operation except
+  GET /ping returns HTTP 401 unauthenticated. The auth model below was established by probing, not by
+  reading the contract — an agent working from the published spec alone would believe the API is open.
+  This is a contract-quality gap worth reporting to the provider.
+summary:
+  types: [http]
+  http_schemes: [bearer]
+  api_key_in: []
+  oauth2_flows: []
+  declared_in_spec: false
+  observed_by_probe: true
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  in: header
+  parameter: Authorization
+  method: probed
+  declared_in_openapi: false
+  evidence:
+  - >-
+    Aereo Cloud client sends `Authorization: Bearer ${token}` on its backend calls
+    (observed verbatim in the cloud.aereo.io production JS bundle).
+  - GET https://tiles.aereo.io/terrain/layer.json -> 401 unauthenticated
+  - GET https://tiles.aereo.io/vector/1/1/1.pbf -> 401 unauthenticated
+  - GET https://tiles.aereo.io/altitude -> 401 unauthenticated
+identity_providers:
+- name: Microsoft Entra ID (Azure AD)
+  protocol: OpenID Connect
+  method: probed
+  note: >-
+    The Aereo Cloud SPA embeds MSAL (@azure/msal-browser) with a fixed azureClientId and a
+    https://cloud.aereo.io/auth/microsoft-redirect callback against login.microsoftonline.com.
+    This is end-user SSO into the console, not a documented API authorization flow — no OAuth
+    authorization/token endpoint is published for third-party API clients.
+  evidence:
+  - https://login.microsoftonline.com/ referenced in the cloud.aereo.io bundle
+  - https://cloud.aereo.io/auth/microsoft-redirect referenced in the cloud.aereo.io bundle
+unauthenticated_operations:
+- operation: ping_ping_get
+  path: /ping
+  note: Health check; returns {"data":"pong"} with no credential.
+gaps:
+- No securitySchemes in the published OpenAPI despite enforced bearer auth.
+- No documented token issuance endpoint, token lifetime, or scope model for API clients.
+- No /.well-known/openid-configuration or /.well-known/oauth-authorization-server on any aereo.io host.

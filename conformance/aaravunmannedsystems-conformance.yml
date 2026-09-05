@@ -1,0 +1,76 @@
+generated: '2026-09-05'
+method: derived
+source: >-
+  openapi/aaravunmannedsystems-tile-server-openapi-original.json, live response inspection, and
+  searches of aereo.io / resources.aereo.io for published compliance claims
+note: >-
+  No Compliance pointer is emitted. Aereo's marketing copy asserts "MEITY-compliance, data encryption
+  and extensive control", but no trust center, certification page or named audit report (SOC 2,
+  ISO 27001) was found on any aereo.io host, so there is no published compliance program to point at.
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: Published contract declares openapi 3.1.0 and parses.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in the spec; no authorization-server metadata on any host.
+- id: oidc
+  conforms: partial
+  evidence: >-
+    The Aereo Cloud console federates end-user sign-in to Microsoft Entra ID via MSAL/OIDC, but
+    Aereo publishes no OIDC discovery document of its own and offers no OIDC path for API clients.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use a proprietary {meta, data} envelope with content-type application/json, not
+    application/problem+json.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on all nine first-party hosts probed.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation header observed.
+- id: http-bearer-auth
+  conforms: true
+  evidence: >-
+    Authorization Bearer enforced on 11 of 12 operations (probed); undeclared in the contract.
+- id: hsts
+  conforms: true
+  evidence: 'tiles.aereo.io returns strict-transport-security: max-age=3600 (a short max-age).'
+domain_standards:
+  market: geospatial / earth observation
+  note: >-
+    REWARD-ONLY and no award is claimed. The contract carries geospatial FORMAT conventions but
+    declares no geospatial API STANDARD. Recorded honestly below rather than inflated.
+  entries:
+  - id: ogc-api
+    conforms: false
+    evidence: >-
+      No /conformance endpoint, no conformsTo[] with opengis.net class URIs, and no OGC API landing
+      page on tiles.aereo.io. The Tile Server is a bespoke FastAPI service, not an OGC API - Tiles
+      implementation.
+  - id: ogc-ows-getcapabilities
+    conforms: false
+    evidence: >-
+      No WMS/WFS/WCS/WMTS/CSW surface. The only opengis.net references anywhere in Aereo's client
+      bundles are EPSG/CRS84 coordinate-reference-system URIs emitted by OpenLayers/proj4 as
+      boilerplate — not a service endpoint. No blind OGC path probing was performed, per contract.
+  - id: ogc-3d-tiles
+    conforms: partial
+    evidence: >-
+      GET /3dtiles/{filename}.{extension} serves Cesium 3D Tiles, an OGC Community Standard, and the
+      console renders it with CesiumJS. Aereo makes no formal conformance claim; the format is used,
+      the standard is not declared.
+  - id: cesium-quantized-mesh
+    conforms: partial
+    evidence: >-
+      GET /terrain/{z}/{x}/{y}.terrain and /cesium-terrain/layer.json implement the quantized-mesh
+      terrain tiling scheme (a de-facto Cesium format, not a formal OGC standard).
+  - id: mapbox-vector-tile
+    conforms: partial
+    evidence: GET /vector/{z}/{x}/{y}.pbf serves the Mapbox Vector Tile format.
+  - id: cog-cloud-optimized-geotiff
+    conforms: partial
+    evidence: >-
+      Two operations are described in the spec as COG tile views (/ortho and /histogram), indicating
+      Cloud Optimized GeoTIFF as the raster source format.

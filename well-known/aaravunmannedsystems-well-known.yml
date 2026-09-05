@@ -1,0 +1,142 @@
+generated: '2026-09-05'
+method: probed
+source: live GET of the named /.well-known/ path list on every host this record knows
+note: >-
+  Zero real discovery documents were served. Every path was requested by name on nine first-party
+  aereo.io hosts (the registrable domain and www, the Aereo Cloud console, the processing console,
+  the Tile Server API host, the two rainbow-* API hosts, the log server and the resources site).
+  Two hosts — cloud.aereo.io and processing.cloud.aereo.io — are single-page-application catch-alls
+  that answer HTTP 200 with the same HTML shell for EVERY path, including a negative-control path
+  that cannot exist; their 200s are recorded as soft-404s and are NOT documents. No WellKnown and
+  no SecurityTxt pointer is emitted, because the provider serves neither.
+hit_count: 0
+soft_404_control: failed
+soft_404_control_detail: >-
+  GET /.well-known/aaravunmannedsystems-negative-control-7f3ab91c.json returned HTTP 200 with a
+  2189-byte HTML shell on cloud.aereo.io and a 372-byte HTML shell on processing.cloud.aereo.io,
+  byte-identical to every other 200 on those hosts. All hits on those two hosts are discarded.
+hosts:
+- host: https://aereo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/ucp.json, status: 404}
+  - {path: /.well-known/acp.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://www.aereo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://tiles.aereo.io
+  note: Tile Server API host — honest JSON 404 envelope on every miss, no catch-all.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/ucp.json, status: 404}
+  - {path: /.well-known/acp.json, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://cloud.aereo.io
+  note: >-
+    SPA catch-all. Returns 200 with a 2189-byte Cesium/Vite HTML shell for every path including the
+    negative control. No document was fetched or saved; every status below is a soft-404.
+  soft_404: true
+  documents:
+  - {path: /.well-known/security.txt, status: 200, soft_404: true}
+  - {path: /.well-known/openid-configuration, status: 200, soft_404: true}
+  - {path: /.well-known/oauth-authorization-server, status: 200, soft_404: true}
+  - {path: /.well-known/oauth-protected-resource, status: 200, soft_404: true}
+  - {path: /.well-known/api-catalog, status: 200, soft_404: true}
+  - {path: /.well-known/ai-plugin.json, status: 200, soft_404: true}
+  - {path: /.well-known/aauth-resource.json, status: 200, soft_404: true}
+  - {path: /.well-known/apis.json, status: 200, soft_404: true}
+  - {path: /apis.json, status: 200, soft_404: true}
+  - {path: /apis.yml, status: 200, soft_404: true}
+  - {path: /.well-known/agent-card.json, status: 200, soft_404: true}
+  - {path: /.well-known/agent.json, status: 200, soft_404: true}
+- host: https://processing.cloud.aereo.io
+  note: SPA catch-all, 372-byte HTML shell on every path including the negative control.
+  soft_404: true
+  documents:
+  - {path: /.well-known/security.txt, status: 200, soft_404: true}
+  - {path: /.well-known/openid-configuration, status: 200, soft_404: true}
+  - {path: /.well-known/oauth-authorization-server, status: 200, soft_404: true}
+  - {path: /.well-known/api-catalog, status: 200, soft_404: true}
+  - {path: /.well-known/aauth-resource.json, status: 200, soft_404: true}
+  - {path: /.well-known/apis.json, status: 200, soft_404: true}
+  - {path: /apis.json, status: 200, soft_404: true}
+  - {path: /apis.yml, status: 200, soft_404: true}
+- host: https://rainbow-analytics-api.aereo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://rainbow-processing-api.aereo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://log-server.aereo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://resources.aereo.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/aauth-resource.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /apis.yml, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
