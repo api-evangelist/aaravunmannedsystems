@@ -1,0 +1,45 @@
+# generated: '2026-09-10'
+# method: generated
+# source: openapi/aereo7a4d-real-time-inference-server-openapi.json
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay — Aereo Cloud Real-Time Inference Server
+  version: 1.0.0
+extends: ../openapi/aereo7a4d-real-time-inference-server-openapi.json
+x-note: >-
+  Non-destructive. Records the servers block the published contract omits and the fact that the
+  service's actual surface — a WebSocket SAM2 inference channel — is not described by the
+  contract at all. No channel, message or schema is invented here.
+actions:
+- target: $
+  update:
+    servers:
+    - url: https://ac-rti-server-prod.aereo.io
+      description: >-
+        Production real-time inference host. Absent from the published contract; recorded here
+        because it is the host the document was fetched from and the host the Aereo Cloud
+        browser client calls.
+- target: $.info
+  update:
+    x-provenance:
+      fetched: '2026-09-10'
+      url: https://ac-rti-server-prod.aereo.io/openapi.json
+      http_status: 200
+      content_type: application/json
+      documented_by_provider: false
+    x-undescribed-surface:
+      transport: WebSocket
+      evidence: info.description — "WebSocket-based real-time SAM2 inference server"
+      note: >-
+        The HTTP contract declares one operation, GET /ping. The inference surface itself is a
+        WebSocket channel whose messages Aereo does not describe in any published document and
+        for which no AsyncAPI exists. Nothing about it is asserted here.
+- target: $
+  update:
+    tags:
+    - name: health
+      description: Liveness probe.
+- target: $.paths['/ping'].get
+  update:
+    tags:
+    - health

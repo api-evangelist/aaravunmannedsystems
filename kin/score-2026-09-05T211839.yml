@@ -1,0 +1,46 @@
+# Kin Score artifact — aaravunmannedsystems — 2026-09-05T211839
+# The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
+---
+kin_score:
+  slug: aaravunmannedsystems
+  schema_version: 0.18.3
+  scored_at: '2026-09-05'
+  run_ts: 2026-09-05T211839
+  composite: 29.2
+  band: thin
+  facets:
+    discoverability: 68.5
+    contract_quality: 37.4
+    governance: 4.5
+    operational_transparency: 0.0
+    developer_ergonomics: 28.0
+    commercial_clarity: 34.2
+    contract_governance: 4.5
+    access_clarity: 34.2
+  agent_readiness:
+    score: 31.9
+    band: agent-ready
+    dimensions:
+      spec_presence: true
+      agentic_access: false
+      reversibility_documented: na
+      mcp_server: false
+      auth_clarity: bearer
+      idempotency: na
+      error_semantics: verified
+      openapi_examples: false
+      rate_limit_signal: documented
+      event_surface_described: false
+      agent_skills: derived
+      well_known_catalog: true
+      consent_identity: false
+      agent_card: false
+      dry_run_mode: na
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
+  provenance:
+    mcp: derived
+    skills: derived
+    conformance: derived

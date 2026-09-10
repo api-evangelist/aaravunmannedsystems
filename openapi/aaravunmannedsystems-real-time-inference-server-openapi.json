@@ -1,0 +1,1 @@
+{"openapi":"3.1.0","info":{"title":"Real-Time Inference Server","description":"WebSocket-based real-time SAM2 inference server","version":"0.1.0"},"paths":{"/ping":{"get":{"summary":"Ping","operationId":"ping_ping_get","responses":{"200":{"description":"Successful Response","content":{"application/json":{"schema":{}}}}}}}}}
