@@ -1,6 +1,15 @@
 aid: aaravunmannedsystems
 name: Aarav Unmanned Systems (Aereo)
-description: 'Aarav Unmanned Systems (AUS), which rebranded as Aereo in 2023, is an Indian end-to-end enterprise drone company founded in 2013 out of the research labs of IIT Kanpur and headquartered in Bengaluru. It designs and manufactures survey-grade UAVs and operates Aereo Cloud, a geospatial data platform that turns drone-captured imagery into orthomosaics, digital terrain models, 3D tilesets and AI-driven analytics for mining volumetrics, infrastructure and construction monitoring, urban and rural land records, agriculture and forest conservation. The company reports mapping over 45,000 villages and surveying more than 15 million acres. Its public machine-readable API surface is narrow: the Aereo Cloud web application is authenticated and JS-rendered, but its Tile Server microservice publishes a real OpenAPI 3.1.0 description at https://tiles.aereo.io/openapi.json covering vector, raster, Cesium terrain and 3D Tiles delivery.'
+description: 'Aarav Unmanned Systems (AUS), which rebranded as Aereo in 2023, is an Indian end-to-end
+  enterprise drone company founded in 2013 out of the research labs of IIT Kanpur and headquartered in
+  Bengaluru. It designs and manufactures survey-grade UAVs and operates Aereo Cloud, a geospatial data
+  platform that turns drone-captured imagery into orthomosaics, digital terrain models, 3D tilesets and
+  AI-driven analytics for mining volumetrics, infrastructure and construction monitoring, urban and rural
+  land records, agriculture and forest conservation. The company reports mapping over 45,000 villages
+  and surveying more than 15 million acres. Its public machine-readable API surface is narrow: the Aereo
+  Cloud web application is authenticated and JS-rendered, but its Tile Server microservice publishes a
+  real OpenAPI 3.1.0 description at https://tiles.aereo.io/openapi.json covering vector, raster, Cesium
+  terrain and 3D Tiles delivery.'
 image: https://aereo.io/wp-content/uploads/2023/06/logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/aaravunmannedsystems/refs/heads/main/apis.yml
 x-type: company
@@ -26,9 +35,14 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: aaravunmannedsystems-tile-server
+- aid: aaravunmannedsystems:aaravunmannedsystems-tile-server
   name: Aereo Cloud Tile Server
-  description: A microservice for serving the map tiles behind Aereo Cloud. Publishes a FastAPI-generated OpenAPI 3.1.0 description with twelve read operations delivering Mapbox vector tiles (.pbf), Cloud Optimized GeoTIFF orthomosaic and histogram raster tiles (.png), MBTiles rasters, quantized-mesh terrain tiles and their layer.json metadata, Cesium 3D Tiles and computer-vision tilesets, plus a point-altitude lookup and a health check. Discovered at the API host root; the spec declares no servers[] block and no securitySchemes.
+  description: A microservice for serving the map tiles behind Aereo Cloud. Publishes a FastAPI-generated
+    OpenAPI 3.1.0 description with twelve read operations delivering Mapbox vector tiles (.pbf), Cloud
+    Optimized GeoTIFF orthomosaic and histogram raster tiles (.png), MBTiles rasters, quantized-mesh terrain
+    tiles and their layer.json metadata, Cesium 3D Tiles and computer-vision tilesets, plus a point-altitude
+    lookup and a health check. Discovered at the API host root; the spec declares no servers[] block and
+    no securitySchemes.
   humanURL: https://cloud.aereo.io/
   baseURL: https://tiles.aereo.io
   image: https://aereo.io/wp-content/uploads/2023/06/logo.svg
@@ -48,12 +62,19 @@ apis:
     url: errors/aaravunmannedsystems-problem-types.yml
   - type: DataModel
     url: data-model/aaravunmannedsystems-data-model.yml
-- aid: aereo7a4d-real-time-inference-server
+- aid: aaravunmannedsystems:aereo7a4d-real-time-inference-server
   name: Aereo Cloud Real-Time Inference Server
-  description: WebSocket-based real-time SAM2 (Segment Anything 2) inference service used by Aereo Cloud for interactive segmentation of drone imagery. Its HTTP contract exposes only a liveness probe; the inference surface itself is a WebSocket channel that the published contract does not describe and for which no AsyncAPI is published.
+  description: WebSocket-based real-time SAM2 (Segment Anything 2) inference service used by Aereo Cloud
+    for interactive segmentation of drone imagery. Its HTTP contract exposes only a liveness probe; the
+    inference surface itself is a WebSocket channel that the published contract does not describe and
+    for which no AsyncAPI is published.
   humanURL: https://cloud.aereo.io/
   baseURL: https://ac-rti-server-prod.aereo.io
   tags:
+  - Machine-Learning
+  - Inference
+  - Segmentation
+  tags_raw:
   - Machine Learning
   - Inference
   - Segmentation
@@ -105,5 +126,6 @@ x-enrichment:
 x-coverage:
   state: covered
   reason: contract-published
-  detail: One real first-party OpenAPI 3.1.0 was found at the API host root (https://tiles.aereo.io/openapi.json) after the docs/console host returned an SPA catch-all; the rest of Aereo Cloud is authenticated.
+  detail: One real first-party OpenAPI 3.1.0 was found at the API host root (https://tiles.aereo.io/openapi.json)
+    after the docs/console host returned an SPA catch-all; the rest of Aereo Cloud is authenticated.
   checked: '2026-09-05'
