@@ -35,55 +35,152 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: aaravunmannedsystems:aaravunmannedsystems-tile-server
-  name: Aereo Cloud Tile Server
-  description: A microservice for serving the map tiles behind Aereo Cloud. Publishes a FastAPI-generated
-    OpenAPI 3.1.0 description with twelve read operations delivering Mapbox vector tiles (.pbf), Cloud
-    Optimized GeoTIFF orthomosaic and histogram raster tiles (.png), MBTiles rasters, quantized-mesh terrain
-    tiles and their layer.json metadata, Cesium 3D Tiles and computer-vision tilesets, plus a point-altitude
-    lookup and a health check. Discovered at the API host root; the spec declares no servers[] block and
-    no securitySchemes.
+- aid: aaravunmannedsystems:aaravunmannedsystems-3dtiles-api
+  name: Aarav Unmanned Systems (Aereo) 3dtiles API
+  description: The 3dtiles API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for 3dtiles.
   humanURL: https://cloud.aereo.io/
   baseURL: https://tiles.aereo.io
-  image: https://aereo.io/wp-content/uploads/2023/06/logo.svg
   tags:
-  - Tiles
-  - Geospatial
-  - Mapping
-  - Terrain
-  - 3D Tiles
-  - Raster
+  - 3dtiles
   properties:
   - type: OpenAPI
-    url: openapi/aaravunmannedsystems-tile-server-openapi-original.json
-  - type: Overlay
-    url: overlays/aaravunmannedsystems-tile-server-overlay.yaml
+    url: openapi/aaravunmannedsystems-3dtiles-api-openapi.yml
   - type: ErrorCatalog
     url: errors/aaravunmannedsystems-problem-types.yml
   - type: DataModel
     url: data-model/aaravunmannedsystems-data-model.yml
-- aid: aaravunmannedsystems:aereo7a4d-real-time-inference-server
-  name: Aereo Cloud Real-Time Inference Server
-  description: WebSocket-based real-time SAM2 (Segment Anything 2) inference service used by Aereo Cloud
-    for interactive segmentation of drone imagery. Its HTTP contract exposes only a liveness probe; the
-    inference surface itself is a WebSocket channel that the published contract does not describe and
-    for which no AsyncAPI is published.
+- aid: aaravunmannedsystems:aaravunmannedsystems-altitude-api
+  name: Aarav Unmanned Systems (Aereo) Altitude API
+  description: The Altitude API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for altitude.
   humanURL: https://cloud.aereo.io/
-  baseURL: https://ac-rti-server-prod.aereo.io
+  baseURL: https://tiles.aereo.io
   tags:
-  - Machine-Learning
-  - Inference
-  - Segmentation
-  tags_raw:
-  - Machine Learning
-  - Inference
-  - Segmentation
+  - Altitude
   properties:
   - type: OpenAPI
-    url: openapi/aaravunmannedsystems-real-time-inference-server-openapi.json
-  - type: Overlay
-    url: overlays/aaravunmannedsystems-real-time-inference-server-overlay.yaml
+    url: openapi/aaravunmannedsystems-altitude-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-cesium-terrain-api
+  name: Aarav Unmanned Systems (Aereo) Cesium Terrain API
+  description: >-
+    The Cesium Terrain API from Aarav Unmanned Systems (Aereo) — 2 operation(s) for cesium terrain.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Cesium Terrain
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-cesium-terrain-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-cv-tiles-api
+  name: Aarav Unmanned Systems (Aereo) Cv Tiles API
+  description: The Cv Tiles API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for cv tiles.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Cv Tiles
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-cv-tiles-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-histogram-api
+  name: Aarav Unmanned Systems (Aereo) Histogram API
+  description: The Histogram API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for histogram.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Histogram
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-histogram-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-mbtiles-api
+  name: Aarav Unmanned Systems (Aereo) Mbtiles API
+  description: The Mbtiles API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for mbtiles.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Mbtiles
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-mbtiles-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-ortho-api
+  name: Aarav Unmanned Systems (Aereo) Ortho API
+  description: The Ortho API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for ortho.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Ortho
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-ortho-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-ping-api
+  name: Aarav Unmanned Systems (Aereo) Ping API
+  description: The Ping API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for ping.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Ping
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-ping-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-terrain-api
+  name: Aarav Unmanned Systems (Aereo) Terrain API
+  description: The Terrain API from Aarav Unmanned Systems (Aereo) — 2 operation(s) for terrain.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Terrain
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-terrain-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
+- aid: aaravunmannedsystems:aaravunmannedsystems-vector-api
+  name: Aarav Unmanned Systems (Aereo) Vector API
+  description: The Vector API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for vector.
+  humanURL: https://cloud.aereo.io/
+  baseURL: https://tiles.aereo.io
+  tags:
+  - Vector
+  properties:
+  - type: OpenAPI
+    url: openapi/aaravunmannedsystems-vector-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/aaravunmannedsystems-problem-types.yml
+  - type: DataModel
+    url: data-model/aaravunmannedsystems-data-model.yml
 common:
+- type: Overlay
+  url: overlays/aaravunmannedsystems-tile-server-overlay.yaml
+- type: Overlay
+  url: overlays/aaravunmannedsystems-real-time-inference-server-overlay.yaml
 - type: Website
   url: https://aereo.io/
 - type: Portal
