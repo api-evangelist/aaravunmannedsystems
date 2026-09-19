@@ -41,6 +41,8 @@ apis:
   humanURL: https://cloud.aereo.io/
   baseURL: https://tiles.aereo.io
   tags:
+  - 3D Tiles
+  tags_raw:
   - 3dtiles
   properties:
   - type: OpenAPI
@@ -168,6 +170,8 @@ apis:
   humanURL: https://cloud.aereo.io/
   baseURL: https://tiles.aereo.io
   tags:
+  - Vectors
+  tags_raw:
   - Vector
   properties:
   - type: OpenAPI
