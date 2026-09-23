@@ -1,0 +1,20 @@
+openapi: 3.2.0
+info:
+  title: Tile Server Ping API
+  description: A microservice for serving the map tiles
+  version: 0.1.0
+tags:
+- name: Ping
+paths:
+  /ping:
+    get:
+      summary: Ping
+      operationId: ping_ping_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Ping

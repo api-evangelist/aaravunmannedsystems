@@ -1,0 +1,62 @@
+{
+  "provider": "aaravunmannedsystems",
+  "sources": [
+    "_original/aaravunmannedsystems-tile-server-openapi-original.json"
+  ],
+  "outputs": [
+    "aaravunmannedsystems-3dtiles-api-openapi.yml",
+    "aaravunmannedsystems-altitude-api-openapi.yml",
+    "aaravunmannedsystems-cesium-terrain-api-openapi.yml",
+    "aaravunmannedsystems-cv-tiles-api-openapi.yml",
+    "aaravunmannedsystems-histogram-api-openapi.yml",
+    "aaravunmannedsystems-mbtiles-api-openapi.yml",
+    "aaravunmannedsystems-ortho-api-openapi.yml",
+    "aaravunmannedsystems-ping-api-openapi.yml",
+    "aaravunmannedsystems-terrain-api-openapi.yml",
+    "aaravunmannedsystems-vector-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "aaravunmannedsystems-tile-server-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /vector/{z}/{x}/{y}.pbf -> Vector",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /cesium-terrain/layer.json -> Cesium Terrain",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /cesium-terrain/{z}/{x}/{y}.terrain -> Cesium Terrain",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /terrain/layer.json -> Terrain",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /terrain/{z}/{x}/{y}.terrain -> Terrain",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /ortho/{z}/{x}/{y}.png -> Ortho",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /mbtiles/{z}/{x}/{y}.png -> Mbtiles",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /histogram/{z}/{x}/{y}.png -> Histogram",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /3dtiles/{filename}.{extension} -> 3dtiles",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /cv-tiles/{filename}.{extension} -> Cv Tiles",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /altitude -> Altitude",
+    "aaravunmannedsystems-tile-server-openapi-original.json: tagged paths GET /ping -> Ping",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: 3dtiles",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Altitude",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Cesium Terrain",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Cv Tiles",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Histogram",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Mbtiles",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Ortho",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Ping",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Terrain",
+    "aaravunmannedsystems-tile-server-openapi-original.json: declared missing tag: Vector",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/aaravunmannedsystems-real-time-inference-server-openapi.json: archived document superseded by a larger archived document",
+    "aaravunmannedsystems-3dtiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-altitude-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-cesium-terrain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-cv-tiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-histogram-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-mbtiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-ortho-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-ping-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-terrain-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "aaravunmannedsystems-vector-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

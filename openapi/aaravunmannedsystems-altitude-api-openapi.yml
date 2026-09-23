@@ -1,0 +1,82 @@
+openapi: 3.2.0
+info:
+  title: Tile Server Altitude API
+  description: A microservice for serving the map tiles
+  version: 0.1.0
+tags:
+- name: Altitude
+paths:
+  /altitude:
+    get:
+      summary: Get Altitude View
+      operationId: get_altitude_view_altitude_get
+      parameters:
+      - name: longitude
+        in: query
+        required: true
+        schema:
+          type: number
+          title: Longitude
+      - name: latitude
+        in: query
+        required: true
+        schema:
+          type: number
+          title: Latitude
+      - name: key
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Altitude
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

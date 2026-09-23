@@ -1,0 +1,97 @@
+openapi: 3.2.0
+info:
+  title: Tile Server 3dtiles API
+  description: A microservice for serving the map tiles
+  version: 0.1.0
+tags:
+- name: 3dtiles
+paths:
+  /3dtiles/{filename}.{extension}:
+    get:
+      summary: Cesium 3Dtiles View
+      operationId: cesium_3dtiles_view_3dtiles__filename___extension__get
+      parameters:
+      - name: filename
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Filename
+      - name: extension
+        in: path
+        required: true
+        schema:
+          enum:
+          - json
+          - pnts
+          - b3dm
+          - i3dm
+          - glb
+          type: string
+          title: Extension
+      - name: key
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          description: S3 key of tiles directory
+          title: Key
+        description: S3 key of tiles directory
+      - name: with_master_server
+        in: query
+        required: false
+        schema:
+          default: false
+          title: With Master Server
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - 3dtiles
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

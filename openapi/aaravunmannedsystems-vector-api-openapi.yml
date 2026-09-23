@@ -1,0 +1,105 @@
+openapi: 3.2.0
+info:
+  title: Tile Server Vector API
+  description: A microservice for serving the map tiles
+  version: 0.1.0
+tags:
+- name: Vector
+paths:
+  /vector/{z}/{x}/{y}.pbf:
+    get:
+      summary: Vector Tile View
+      operationId: vector_tile_view_vector__z___x___y__pbf_get
+      parameters:
+      - name: z
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Z
+      - name: x
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: X
+      - name: y
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Y
+      - name: key
+        in: query
+        required: false
+        schema:
+          type: string
+          description: S3 key of tiles folder
+          title: Key
+        description: S3 key of tiles folder
+      - name: layer_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+          description: Id of the layer
+          title: Layer Id
+        description: Id of the layer
+      - name: with_master_server
+        in: query
+        required: false
+        schema:
+          default: false
+          title: With Master Server
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Vector
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
