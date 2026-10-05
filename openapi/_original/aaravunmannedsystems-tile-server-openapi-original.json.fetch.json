@@ -1,0 +1,12 @@
+{
+ "url": "https://tiles.aereo.io/openapi.json",
+ "requested_url": "https://tiles.aereo.io/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 17565,
+ "sha256": "730379cb46f86f0bab0054573d961251e3a089cf7bd2c760d6ee5afe1f031b65",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
