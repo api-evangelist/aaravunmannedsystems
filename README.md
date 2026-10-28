@@ -1,4 +1,4 @@
-# Aaravunmannedsystems
+# Aarav Unmanned Systems (Aereo)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,5 +64,121 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aaravunmannedsystems is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://equityzen.com/company/aaravunmannedsystems
+Aarav Unmanned Systems (AUS), which rebranded as Aereo in 2023, is an Indian end-to-end enterprise drone company founded in 2013 out of the research labs of IIT Kanpur and headquartered in Bengaluru. It designs and manufactures survey-grade UAVs and operates Aereo Cloud, a geospatial data platform that turns drone-captured imagery into orthomosaics, digital terrain models, 3D tilesets and AI-driven analytics for mining volumetrics, infrastructure and construction monitoring, urban and rural land records, agriculture and forest conservation. The company reports mapping over 45,000 villages and surveying more than 15 million acres. Its public machine-readable API surface is narrow: the Aereo Cloud web application is authenticated and JS-rendered, but its Tile Server microservice publishes a real OpenAPI 3.1.0 description at https://tiles.aereo.io/openapi.json covering vector, raster, Cesium terrain and 3D Tiles delivery.
+
+**Areas:** Drones · UAV · Geospatial · Mapping · Remote Sensing · Surveying · Mining · Agriculture · Satellite Imagery · Analytics · India
+
+## Aarav Unmanned Systems (Aereo) on APIs.io
+
+Everything profiled for Aarav Unmanned Systems (Aereo) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aaravunmannedsystems/](https://apis.io/providers/aaravunmannedsystems/)** — or go straight to one of the APIs or properties below.
+
+### APIs (10)
+
+- [Aarav Unmanned Systems (Aereo) 3dtiles API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-3dtiles-api/) — The 3dtiles API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for 3dtiles.
+- [Aarav Unmanned Systems (Aereo) Altitude API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-altitude-api/) — The Altitude API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for altitude.
+- [Aarav Unmanned Systems (Aereo) Cesium Terrain API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-cesium-terrain-api/) — The Cesium Terrain API from Aarav Unmanned Systems (Aereo) — 2 operation(s) for cesium terrain.
+- [Aarav Unmanned Systems (Aereo) Cv Tiles API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-cv-tiles-api/) — The Cv Tiles API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for cv tiles.
+- [Aarav Unmanned Systems (Aereo) Histogram API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-histogram-api/) — The Histogram API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for histogram.
+- [Aarav Unmanned Systems (Aereo) Mbtiles API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-mbtiles-api/) — The Mbtiles API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for mbtiles.
+- [Aarav Unmanned Systems (Aereo) Ortho API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-ortho-api/) — The Ortho API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for ortho.
+- [Aarav Unmanned Systems (Aereo) Ping API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-ping-api/) — The Ping API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for ping.
+- [Aarav Unmanned Systems (Aereo) Terrain API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-terrain-api/) — The Terrain API from Aarav Unmanned Systems (Aereo) — 2 operation(s) for terrain.
+- [Aarav Unmanned Systems (Aereo) Vector API](https://apis.io/apis/aaravunmannedsystems/aaravunmannedsystems-vector-api/) — The Vector API from Aarav Unmanned Systems (Aereo) — 1 operation(s) for vector.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [aereo-tile-server](https://apis.io/servers/aaravunmannedsystems/aereo-tile-server/)
+
+#### Overlays (2)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Aaravunmannedsystems Real Time Inference Server Overlay](https://apis.io/overlays/aaravunmannedsystems/aaravunmannedsystems-real-time-inference-server-overlay/)
+- [Aaravunmannedsystems Tile Server Overlay](https://apis.io/overlays/aaravunmannedsystems/aaravunmannedsystems-tile-server-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aaravunmannedsystems Authentication](https://apis.io/security/aaravunmannedsystems/aaravunmannedsystems-authentication/)
+- [Aaravunmannedsystems Domain Security](https://apis.io/security/aaravunmannedsystems/aaravunmannedsystems-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Aaravunmannedsystems Plans Pricing](https://apis.io/plans/aaravunmannedsystems/aaravunmannedsystems-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Aaravunmannedsystems Rate Limits](https://apis.io/rate-limits/aaravunmannedsystems/aaravunmannedsystems-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aereo.io/)
+- [Support](https://aereo.io/contact/)
+- [Terms of service](https://aereo.io/wp-content/uploads/2023/11/Aereo-Data-security-policy-Terms-Conditions-1.pdf)
+- [Privacy policy](https://aereo.io/wp-content/uploads/2023/11/Aereo-Privacy-Policy-1.pdf)
+
+## API Evangelist rating
+
+**Kin Score 28.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 36.2 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 28.0 |
+| Access clarity | 21.1 |
+
+**Agent readiness 31.9** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | yes |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aaravunmannedsystems/](https://apis.io/providers/aaravunmannedsystems/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Aarav Unmanned Systems (Aereo): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aaravunmannedsystems/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
