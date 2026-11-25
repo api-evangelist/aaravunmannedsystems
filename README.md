@@ -99,27 +99,33 @@ Model Context Protocol servers that expose the API to agents.
 
 OpenAPI overlays, including conversational phrasing for each operation.
 
-- [Aaravunmannedsystems Real Time Inference Server Overlay](https://apis.io/overlays/aaravunmannedsystems/aaravunmannedsystems-real-time-inference-server-overlay/)
-- [Aaravunmannedsystems Tile Server Overlay](https://apis.io/overlays/aaravunmannedsystems/aaravunmannedsystems-tile-server-overlay/)
+- [Aarav Unmanned Systems (Aereo) Real Time Inference Server Overlay](https://apis.io/overlays/aaravunmannedsystems/aaravunmannedsystems-real-time-inference-server-overlay/)
+- [Aarav Unmanned Systems (Aereo) Tile Server Overlay](https://apis.io/overlays/aaravunmannedsystems/aaravunmannedsystems-tile-server-overlay/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Aarav Unmanned Systems (Aereo) API Rules](https://apis.io/rules/aaravunmannedsystems/aaravunmannedsystems-rules/)
 
 #### Security (2)
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Aaravunmannedsystems Authentication](https://apis.io/security/aaravunmannedsystems/aaravunmannedsystems-authentication/)
-- [Aaravunmannedsystems Domain Security](https://apis.io/security/aaravunmannedsystems/aaravunmannedsystems-domain-security/)
+- [Aarav Unmanned Systems (Aereo) Authentication](https://apis.io/security/aaravunmannedsystems/aaravunmannedsystems-authentication/)
+- [Aarav Unmanned Systems (Aereo) Domain Security](https://apis.io/security/aaravunmannedsystems/aaravunmannedsystems-domain-security/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Aaravunmannedsystems Plans Pricing](https://apis.io/plans/aaravunmannedsystems/aaravunmannedsystems-plans-pricing/)
+- [Aarav Unmanned Systems (Aereo) Plans Pricing](https://apis.io/plans/aaravunmannedsystems/aaravunmannedsystems-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Aaravunmannedsystems Rate Limits](https://apis.io/rate-limits/aaravunmannedsystems/aaravunmannedsystems-rate-limits/)
+- [Aarav Unmanned Systems (Aereo) Rate Limits](https://apis.io/rate-limits/aaravunmannedsystems/aaravunmannedsystems-rate-limits/)
 
 ## Where to find this API
 
@@ -132,18 +138,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 28.0** — thin · rubric 0.24.0 · scored 2026-10-17
+**Kin Score 31.4** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
-| Discoverability | 71.4 |
-| Contract quality | 36.2 |
-| Contract governance | 4.5 |
+| Discoverability | 66.1 |
+| Contract quality | 40.3 |
+| Contract governance | 18.2 |
 | Operational transparency | 0.0 |
 | Developer ergonomics | 28.0 |
-| Access clarity | 21.1 |
+| Access clarity | 31.9 |
 
-**Agent readiness 31.9** — agent-ready
+**Agent readiness 32.7** — agent-ready
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -166,8 +172,14 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Protected Resource Metadata | — |
 | Dynamic Client Registration | — |
 | Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+| MCP Tool Quality | na |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | na |
 
-**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+**Regulatory alignment 18.6** — Horizontal (data, software, accessibility, platform)
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aaravunmannedsystems/](https://apis.io/providers/aaravunmannedsystems/).
 
